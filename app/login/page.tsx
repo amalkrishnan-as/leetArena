@@ -26,6 +26,9 @@ export default function LoginPage() {
       const { error: signUpError } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/setup`,
+        },
       });
       if (signUpError) {
         setError(signUpError.message);
@@ -214,7 +217,7 @@ export default function LoginPage() {
                   const { createClient: cc } = await import("@/lib/supabase/client");
                   const supabase = cc();
                   await supabase.auth.resetPasswordForEmail(email, {
-                    redirectTo: `${window.location.origin}/reset-password`,
+                    redirectTo: `${window.location.origin}/auth/callback?next=/reset-password`,
                   });
                   setMessage("Password reset email sent — check your inbox.");
                   setError("");

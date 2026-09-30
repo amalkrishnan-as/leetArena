@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-const PUBLIC_PATHS = ["/login", "/setup"];
+const PUBLIC_PATHS = ["/login", "/setup", "/auth", "/reset-password"];
 
 
 export async function proxy(req: NextRequest) {
