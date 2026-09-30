@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "LeetArena — Competitive Coding for Friends",
@@ -36,6 +37,7 @@ export default async function RootLayout({
         >
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
